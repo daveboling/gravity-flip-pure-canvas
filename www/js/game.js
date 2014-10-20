@@ -10,7 +10,7 @@ var Game = (function(){
     this.ctx           = this.canvas.getContext('2d');
     this.canvas.width  = window.innerWidth;
     this.canvas.height = window.innerHeight;
-    //this.assets      = Assets.load();
+    this.assets        = Asset.load();
     this.hasCrashed    = false; //has the ship crashed yet?
 
     this.listen(); //listen for device orientation change

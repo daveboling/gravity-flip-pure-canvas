@@ -13,4 +13,5 @@ html
     script(src='js/game.js')
     script(src='js/ship.js')
   body(ng-app='falldown' ng-controller='MainCtrl')
-    canvas#canvas
+    button(ng-click='start()' ng-hide='gameActive') Start Game
+    canvas#canvas(ng-show='gameActive')
