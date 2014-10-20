@@ -22,5 +22,5 @@
   "browser": true,
   "jquery": true,
 
-  "globals": {"angular":true, "_":true, "toastr":true, "cordova":true, "StatusBar":true, "Game":true, "game":true }
+  "globals": {"angular":true, "_":true, "toastr":true, "cordova":true, "StatusBar":true, "Game":true, "game":true, "Asset":true }
 }

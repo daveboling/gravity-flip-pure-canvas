@@ -1,3 +1,4 @@
+/* exported Asset */
 
 var Asset = (function(){
   'use strict';
@@ -10,8 +11,9 @@ var Asset = (function(){
 
     asset.ship = new Image();
     asset.ship.src = 'img/assets/ship.png';
-  };
 
+    return asset;
+  };
 
   return Asset;
 })();

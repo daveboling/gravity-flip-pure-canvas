@@ -10,16 +10,18 @@ var Ship = (function(){
   }
 
   //draw the ship on the canvas
-  Ship.prototype.draw = function(){
+  Ship.prototype.draw = function(game){
     game.ctx.drawImage(game.assets.ship, this.x, this.y, this.width, this.height);
   };
 
   //update positon based on accelerometer
-  Ship.prototype.update = function(){
-
+  Ship.prototype.update = function(changeInX){
+    console.log(changeInX);
   };
 
-  //Ship.prototype.shipCrashed = function(){}
+  Ship.prototype.shipCrashed = function(){
+    console.log('ship crashed');
+  };
 
   return Ship;
 

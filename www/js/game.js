@@ -23,7 +23,7 @@ var Game = (function(){
   };
 
   Game.prototype.loop = function(){
-    this.hasCrashed = this.ship.shipCrashed(this.ship);
+    //this.hasCrashed = this.ship.shipCrashed(this.ship);
 
     this.clear(); //clear canvas
 
