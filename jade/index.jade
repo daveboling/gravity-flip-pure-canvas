@@ -9,8 +9,8 @@ html
     script(src='lib/ionic/js/ionic.bundle.js')
     script(src='cordova.js')
     script(src='js/app.js')
-  body(ng-app='starter')
-    ion-pane
-      ion-header-bar.bar-stable
-        h1.title Stuff! 
-      ion-content
+    script(src='js/main.js')
+    script(src='js/game.js')
+    script(src='js/ship.js')
+  body(ng-app='falldown' ng-controller='MainCtrl')
+    canvas#canvas
