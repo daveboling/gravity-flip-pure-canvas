@@ -1,5 +1,5 @@
 /* exported Game */
-/* global Ship */
+/* global Ship, Rock */
 
 var Game = (function(){
   'use strict';
@@ -28,7 +28,8 @@ var Game = (function(){
     this.clear(); //clear canvas
 
     this.ship.draw(this);
-    //if ship crashed, then update flags
+    this.rock.draw(this);
+    this.rock.update(this);
 
     window.requestAnimationFrame(this.loop.bind(this));
   };
@@ -40,10 +41,10 @@ var Game = (function(){
   Game.prototype.start = function(){
     this.hasCrashed = false;
     this.ship = new Ship(this);
+    this.rock = new Rock(this);
     this.loop();
   };
 
   return Game;
-
 
 })();
