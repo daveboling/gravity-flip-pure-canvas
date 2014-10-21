@@ -18,7 +18,7 @@ var Game = (function(){
 
   Game.prototype.listen = function(){
     window.addEventListener('deviceorientation', function(data){
-      this.ship.update(data);
+      this.ship.update(data.gamma);
     }.bind(this));
   };
 
@@ -26,10 +26,14 @@ var Game = (function(){
     this.clear(); //clear canvas
 
     this.ship.draw(this);
-    this.line.draw(this);
-    this.line.update(this);
 
+    this.line.draw(this); //will be a loop for each line on the screen
+    this.line.update(this); //this is also in the loop
+    this.hasCrashed = this.line.checkCollision();
 
+    if(this.hasCrashed){
+      alert('You Crashed!');
+    }
     window.requestAnimationFrame(this.loop.bind(this));
   };
 
