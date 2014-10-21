@@ -9,8 +9,14 @@ html
     script(src='lib/ionic/js/ionic.bundle.js')
     script(src='cordova.js')
     script(src='js/app.js')
-  body(ng-app='starter')
+    script(src='js/game.js')
+    script(src='js/main.js')
+    script(src='js/rock.js')
+  body(ng-app='falldown', ng-controller='MainCtrl')
     ion-pane
       ion-header-bar.bar-stable
-        h1.title Stuff! 
+        h1.title Stuff!
+        button.button.button-balanced(ng-click='start()') Start
       ion-content
+        h3 Title: {{title}}
+        canvas#canvas

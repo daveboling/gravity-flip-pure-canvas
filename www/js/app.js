@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  angular.module('starter', ['ionic'])
+  angular.module('falldown', ['ionic'])
   .run(function($ionicPlatform){
     $ionicPlatform.ready(function(){
       if(window.cordova && window.cordova.plugins.Keyboard){
@@ -12,4 +12,3 @@
     });
   });
 })();
-
