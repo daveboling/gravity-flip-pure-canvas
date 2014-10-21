@@ -20,11 +20,24 @@ var Line = (function(){
 
   Line.prototype.create = function(game){
     var currentX = 0,
-    debrisToDraw = Math.ceil((Math.random() * 12) + 1);
+    debrisToDraw = Math.floor((Math.random() * 4) + 1), //number of objects
+    debrisPos = [],
+    nums = [],
+    maxNum = 6,
+    num;
 
-    for(var i = 0; i < debrisToDraw; i++){
+    while (nums.length < debrisToDraw) {
+      num = Math.floor(Math.random() * maxNum);
+      if (nums.indexOf(num) === -1) {
+        nums.push(num);
+      }
+    }
+    debugger;
+
+    for(var i = 0; i < 6; i++){
+      debrisPos.push(Math.floor(Math.random()*6));
       this.debris.push(new Rock({y: 20, x: currentX}));
-      currentX += 100;
+      currentX += window.innerWidth/6;
     }
   };
 
