@@ -1,32 +1,24 @@
-/*exported Rock*/
+/* exported Rock */
 var Rock = (function(){
   'use strict';
 
-  function Rock(game){
+  function Rock(line){
     this.width = 40;
     this.height = 40;
-    this.x = 20;
-    this.y = 0;
+    this.x = line.x;
+    this.y = line.y;
   }
 
   Rock.prototype.draw = function(game){
     game.ctx.fillRect(this.x, this.y, this.width, this.height);
   };
 
-  Rock.prototype.update = function(game){
-    if(this.y > game.canvas.height){
-      this.y = 0;
-      this.x = Math.ceil(Math.random() * game.canvas.width);
-      game.score += 1;
-    }else{
-      this.y += 2;
-    }
-    if(game.score > 2){
-      this.y += 4;
-    }
-    console.log('this.x', this.x);
-    console.log('score', game.score);
+  Rock.prototype.update = function(line){
+    this.y = line.y;
+  };
 
+  Rock.prototype.checkShipPosition = function(ship){
+    //if(rock.x and rock.y === ship.x && ship.y)
   };
   return Rock;
 })();

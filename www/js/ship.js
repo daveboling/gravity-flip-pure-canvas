@@ -16,11 +16,11 @@ var Ship = (function(){
 
   //update positon based on accelerometer
   Ship.prototype.update = function(changeInX){
-    console.log(changeInX);
+    //console.log(changeInX);
   };
 
   Ship.prototype.shipCrashed = function(){
-    console.log('ship crashed');
+    //console.log('ship crashed');
   };
 
   return Ship;
