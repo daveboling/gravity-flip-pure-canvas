@@ -11,6 +11,7 @@ var Game = (function(){
     this.ctx = this.canvas.getContext('2d');
     this.canvas.height = bodyHeight - headerHeight;
     this.canvas.width = window.innerWidth;
+    this.score = 0;
   }
 
   Game.prototype.loop = function(){

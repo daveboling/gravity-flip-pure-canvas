@@ -17,10 +17,15 @@ var Rock = (function(){
     if(this.y > game.canvas.height){
       this.y = 0;
       this.x = Math.ceil(Math.random() * game.canvas.width);
+      game.score += 1;
     }else{
-    this.y += 3;
-  }
+      this.y += 2;
+    }
+    if(game.score > 3){
+      this.y += 4;
+    }
     console.log('this.x', this.x);
+    console.log('score', game.score);
 
   };
   return Rock;
