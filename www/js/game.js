@@ -26,11 +26,12 @@ var Game = (function(){
 
   Game.prototype.loop = function(){
     this.clear(); //clear canvas
+    var self = this;
 
     this.ship.draw(this);
-    this.drawLine();
-    //this.line.draw(this);
-    //this.line.update(this);
+    console.log(this.currentLine);
+    this.lines[this.currentLine].draw(this, this.currentLine);
+    this.lines[this.currentLine].update(this, this.currentLine);
 
     window.requestAnimationFrame(this.loop.bind(this));
   };
@@ -41,17 +42,11 @@ var Game = (function(){
 
   Game.prototype.timer = function(){
     this.clock += 1;
-  };
-
-  Game.prototype.drawLine = function(){
-    console.log('timer', this.clock);
     if(this.clock % 3 === 0){
       this.lines.push(new Line(this));
-      console.log('this.lines', this.lines);
-      this.lines[this.currentLine].draw(this);
-      this.lines[this.currentLine].update(this);
       this.currentLine++;
     }
+    console.log(this.currentLine);
   };
 
   Game.prototype.start = function(){

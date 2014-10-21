@@ -12,8 +12,8 @@ var Line = (function(){
     this.create(game);
   }
 
-  Line.prototype.draw = function(game){
-    game.line.debris.forEach(function(rock){
+  Line.prototype.draw = function(game, index){
+    game.lines[index].debris.forEach(function(rock){
       rock.draw(game);
     });
   };
