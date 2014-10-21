@@ -18,7 +18,7 @@ var Game = (function(){
 
   Game.prototype.listen = function(){
     window.addEventListener('deviceorientation', function(data){
-      this.ship.update(data);
+      this.ship.update(data.gamma);
     }.bind(this));
   };
 
@@ -28,7 +28,6 @@ var Game = (function(){
     this.ship.draw(this);
     this.line.draw(this);
     this.line.update(this);
-
 
     window.requestAnimationFrame(this.loop.bind(this));
   };
