@@ -21,7 +21,7 @@ var Rock = (function(){
     }else{
       this.y += 2;
     }
-    if(game.score > 3){
+    if(game.score > 2){
       this.y += 4;
     }
     console.log('this.x', this.x);
