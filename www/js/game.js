@@ -6,10 +6,13 @@ var Game = (function(){
 
   //game objects
   function Game(){
+      var bodyHeight   = window.innerHeight,
+          headerHeight = document.getElementsByTagName('ion-header-bar')[0].clientHeight;
+
     this.canvas        = document.getElementById('canvas');
     this.ctx           = this.canvas.getContext('2d');
     this.canvas.width  = window.innerWidth;
-    this.canvas.height = window.innerHeight;
+    this.canvas.height = bodyHeight - headerHeight;
     this.assets        = Asset.load();
     this.hasCrashed    = false; //has the ship crashed yet?
     this.clock         = 0;

@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>Gravity Flip </title>
+    <title>Gravity Flip</title>
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <script src="lib/ionic/js/ionic.bundle.js"></script>
     <script src="cordova.js"></script>
@@ -17,7 +18,13 @@
     <script src="js/main.js"></script>
   </head>
   <body ng-app="falldown" ng-controller="MainCtrl">
-    <button ng-click="start()" ng-hide="gameActive">Start Game</button>
-    <canvas id="canvas" ng-show="gameActive"></canvas>
+    <ion-header-bar class="bar-dark">
+      <button ng-show="gameActive" class="button button-clear">{{clock}} s</button>
+      <h1 class="title">GRAVITY FLIP</h1>
+      <button ng-click="start()" ng-hide="gameActive" class="button button-assertive">Start Game</button>
+    </ion-header-bar>
+    <ion-content>
+      <canvas id="canvas" ng-show="gameActive"></canvas>
+    </ion-content>
   </body>
 </html>
