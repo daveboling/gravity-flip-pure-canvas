@@ -63,6 +63,9 @@ var Game = (function(){
       window.cancelAnimationFrame(animate);
       clearInterval(gameClock);
       this.clear();
+
+      var crashed = new Event('crashed');
+      window.dispatchEvent(crashed);
     }
 
   };

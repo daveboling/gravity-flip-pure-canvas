@@ -18,5 +18,14 @@
       game.start();
     };
 
+    window.addEventListener('crashed', function(){
+      alert('crash event triggered from main.js');
+      game = new Game();
+      $scope.gameActive = false;
+
+      $scope.$digest();
+
+    });
+
   }]);
 })();
