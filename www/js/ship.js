@@ -12,6 +12,11 @@ var Ship = (function(){
 
   //draw the ship on the canvas
   Ship.prototype.draw = function(game){
+    this.x = this.x < 0 ? 0 : this.x;
+    this.x = this.x > game.canvas.width - 45 ? game.canvas.width - 45 : this.x;
+
+    this.y = this.y < 0 ? 0 : this.y;
+    this.y = this.y > game.canvas.height - 45 ? game.canvas.height - 45 : this.y;
     game.ctx.drawImage(game.assets.ship, this.x, this.y, this.width, this.height);
   };
 
