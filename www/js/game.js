@@ -27,14 +27,16 @@ var Game = (function(){
   Game.prototype.loop = function(){
     this.clear(); //clear canvas
 
-    //draw the ship
-    this.ship.draw(this);
 
     //draw lines that are currently in lines array
     this.lines.forEach(function(line, index){
       line.draw(this, index);
       line.update(this, index);
     }.bind(this));
+
+    //draw the ship
+    this.ship.draw(this);
+
 
     //check ship collision
     this.hasCrashed = Line.checkCollision(this.lines);
@@ -53,7 +55,7 @@ var Game = (function(){
 
   Game.prototype.timer = function(){
     this.clock += 1;
-    if(this.clock % 6 === 0){
+    if(this.clock % 5 === 0){
       this.lines.push(new Line(this));
       this.currentLine++;
     }

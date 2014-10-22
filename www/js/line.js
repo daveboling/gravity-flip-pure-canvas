@@ -6,7 +6,7 @@ var Line = (function(){
 
   function Line(game){
     this.x = 0;
-    this.y = game.canvas.height + 20;
+    this.y = game.canvas.height;
     this.debris = [];
 
     this.create(game);
@@ -54,7 +54,7 @@ var Line = (function(){
 
   Line.prototype.update = function(game){
     //asteroids speed
-    this.y -= 1;
+    this.y -= 3;
 
     this.debris.forEach(function(rock){
       rock.update(this, game);

@@ -19,10 +19,6 @@ var Ship = (function(){
     this.x += changeInX;
   };
 
-  Ship.prototype.shipCrashed = function(){
-    //console.log('ship crashed');
-  };
-
   return Ship;
 
 })();
