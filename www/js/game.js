@@ -59,7 +59,7 @@ var Game = (function(){
 
   Game.prototype.timer = function(){
     this.clock += 1;
-    if(this.clock % 4.3 === 0){
+    if(this.clock % 4 === 0){
       this.lines.push(new Line(this));
     }
 
