@@ -61,7 +61,6 @@ var Game = (function(){
     this.clock += 1;
     if(this.clock % 3 === 0){
       this.lines.push(new Line(this));
-      //debugger;
     }
 
     if(this.lines.length > 3){

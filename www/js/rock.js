@@ -28,8 +28,7 @@ var Rock = (function(){
         distance = Math.sqrt(sumsquares);
     //needs to be fixed in relation to how rocks are being drawn
     if(distance < 5){
-      console.log('ship crashed');
-      //this.isCollided = true;
+      this.isCollided = true;
     }
   };
 
