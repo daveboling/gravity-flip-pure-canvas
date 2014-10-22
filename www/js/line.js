@@ -23,18 +23,22 @@ var Line = (function(){
     debrisToDraw = Math.ceil((Math.random() * 12) + 1);
 
     for(var i = 0; i < debrisToDraw; i++){
-      this.debris.push(new Rock({y: 20, x: currentX}));
+      var objectToSend = {x: currentX, y: 20};
+      this.debris.push(new Rock(objectToSend));
       currentX += 100;
     }
   };
 
   Line.prototype.update = function(game){
+    /*
    if(this.y > game.canvas.height){
       this.y = 0;
       this.x = Math.ceil(Math.random() * game.canvas.width);
     }else{
       this.y += 1;
     }
+    */
+    this.y += 1;
 
     this.debris.forEach(function(rock){
       rock.update(this);

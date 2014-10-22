@@ -29,9 +29,11 @@ var Game = (function(){
     var self = this;
 
     this.ship.draw(this);
-    console.log(this.currentLine);
-    this.lines[this.currentLine].draw(this, this.currentLine);
-    this.lines[this.currentLine].update(this, this.currentLine);
+    console.log(this.lines);
+    this.lines.forEach(function(line, index){
+      line.draw(this, index);
+      line.update(this, index);
+    }.bind(this));
 
     window.requestAnimationFrame(this.loop.bind(this));
   };
@@ -46,7 +48,10 @@ var Game = (function(){
       this.lines.push(new Line(this));
       this.currentLine++;
     }
-    console.log(this.currentLine);
+
+    if(this.lines.length > 7){
+      this.lines.shift();
+    }
   };
 
   Game.prototype.start = function(){
