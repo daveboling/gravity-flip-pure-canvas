@@ -32,7 +32,6 @@ var Line = (function(){
         nums.push(num);
       }
     }
-    debugger;
 
     for(var i = 0; i < 6; i++){
       debrisPos.push(Math.floor(Math.random()*6));

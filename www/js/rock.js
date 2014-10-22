@@ -11,7 +11,7 @@ var Rock = (function(){
   }
 
   Rock.prototype.draw = function(game){
-    var rockImgs     = [game.assets.asteroid1, game.assets.asteroid2, game.assets.asteroid3, game.assets.asteroid4, game.assets.asteroid5, game.assets.asteroid6, game.assets.venus, game.assets.jupiter, game.assets.mars, game.assets.neptune];
+    var rockImgs     = [game.assets.asteroid1, game.assets.asteroid2, game.assets.asteroid3, game.assets.asteroid4, game.assets.asteroid5, game.assets.asteroid6, game.assets.venus, game.assets.jupiter, game.assets.mars, game.assets.neptune, game.assets.earth, game.assets.pluto, game.assets.saturn, game.assets.uranus, game.assets.theSun];
     //game.ctx.fillRect(this.x, this.y, this.width, this.height);
     game.ctx.drawImage(rockImgs[this.rockImgIndex], this.x, this.y, this.width, this.height);
   };
