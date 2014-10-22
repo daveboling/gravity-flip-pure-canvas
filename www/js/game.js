@@ -4,6 +4,9 @@
 var Game = (function(){
   'use strict';
 
+  var animate = '',
+  gameClock = '';
+
   //game objects
   function Game(){
       var bodyHeight   = window.innerHeight,
@@ -16,6 +19,7 @@ var Game = (function(){
     this.assets        = Asset.load();
     this.hasCrashed    = false; //has the ship crashed yet?
     this.clock         = 0;
+    this.flipTimer     = 0;
     this.lines         = [];
     this.currentLine   = 0;
     this.listen(); //listen for device orientation change
@@ -24,7 +28,7 @@ var Game = (function(){
   Game.prototype.listen = function(){
     window.addEventListener('deviceorientation', function(data){
       if(this.ship){
-        this.ship.update(data.gamma);
+        this.ship.update(data);
       }
     }.bind(this));
   };
@@ -42,18 +46,23 @@ var Game = (function(){
 
     }.bind(this));
 
+    this.gravityFlip();
+
     //draw the ship
     this.ship.draw(this);
 
     //check ship collision
     this.hasCrashed = Line.checkCollision(this.lines);
 
+    //animation
+    animate = window.requestAnimationFrame(this.loop.bind(this));
+
     if(this.hasCrashed){
-      console.log('You Crashed!');
+      window.cancelAnimationFrame(animate);
+      clearInterval(gameClock);
+      this.clear();
     }
 
-
-    window.requestAnimationFrame(this.loop.bind(this));
   };
 
   Game.prototype.clear = function(){
@@ -61,23 +70,38 @@ var Game = (function(){
   };
 
   Game.prototype.timer = function(){
-    this.clock += 1;
+    this.clock++;
+    this.flipTimer++;
+    console.log(this.flipTimer);
     if(this.clock % 4 === 0){
       this.lines.push(new Line(this));
     }
 
-    if(this.lines.length > 3){
+    if(this.lines.length > 5){
       this.lines.shift();
+    }
+  };
+
+  Game.prototype.gravityFlip = function(){
+    if(this.flipTimer > 20){
+      //draw warning
+      console.log('Warning: Gravity flip imminent');
+    }
+    if(this.flipTimer === 30){
+      this.ship.gravityFlip();
+      console.log('Gravity flip');
+      this.flipTimer = 0;
     }
   };
 
   Game.prototype.start = function(){
     //timer for adding new lines
-    setInterval(this.timer.bind(this), 1000);
+    gameClock = setInterval(this.timer.bind(this), 1000);
     this.hasCrashed = false;
     this.ship = new Ship(this);
     this.lines.push(new Line(this));
     this.loop();
+    // FOR OLDER ANDROID ONLY - setInterval(this.loop.bind(this), 16);
   };
 
   return Game;
