@@ -28,7 +28,7 @@ var Rock = (function(){
     var sumsquares = Math.pow((this.x + this.r) - ship.x, 2) + Math.pow(this.y - ship.y, 2),
         distance = Math.sqrt(sumsquares);
     //needs to be fixed in relation to how rocks are being drawn
-    if(distance < (this.r  * 0.3)){
+    if(distance < (this.r  * 0.9)){
       this.isCollided = true;
     }
   };

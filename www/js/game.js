@@ -100,6 +100,7 @@ var Game = (function(){
     this.ship = new Ship(this);
     this.lines.push(new Line(this));
     this.loop();
+    //setInterval(this.loop.bind(this), 16);
     // FOR OLDER ANDROID ONLY - setInterval(this.loop.bind(this), 16);
   };
 
