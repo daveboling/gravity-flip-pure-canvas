@@ -41,7 +41,7 @@ var Line = (function(){
       if(debrisPos[j] !== 'rock'){
           currentX += window.innerWidth/6;
         }else{
-          this.debris.push(new Rock({y: 20, x: currentX}));
+          this.debris.push(new Rock({y: game.canvas.height, x: currentX}));
           currentX += window.innerWidth/6;
         }
       }
