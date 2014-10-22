@@ -22,7 +22,7 @@ var Game = (function(){
   Game.prototype.listen = function(){
     window.addEventListener('deviceorientation', function(data){
       if(this.ship){
-        this.ship.update(data.gamma);
+        this.ship.update(data);
       }
     }.bind(this));
   };
@@ -63,6 +63,7 @@ var Game = (function(){
   Game.prototype.timer = function(){
     this.clock++;
     this.flipTimer++;
+    console.log(this.flipTimer);
     if(this.clock % 4 === 0){
       this.lines.push(new Line(this));
     }
@@ -78,7 +79,7 @@ var Game = (function(){
       console.log('Warning: Gravity flip imminent');
     }
     if(this.flipTimer === 30){
-      //call this.ship.gravityFlip()
+      this.ship.gravityFlip()
       console.log('Gravity flip');
       this.flipTimer = 0;
     }
