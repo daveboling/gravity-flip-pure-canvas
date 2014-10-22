@@ -20,7 +20,9 @@ var Game = (function(){
 
   Game.prototype.listen = function(){
     window.addEventListener('deviceorientation', function(data){
-      this.ship.update(data.gamma);
+      if(this.ship){
+        this.ship.update(data.gamma);
+      }
     }.bind(this));
   };
 
@@ -30,13 +32,15 @@ var Game = (function(){
 
     //draw lines that are currently in lines array
     this.lines.forEach(function(line, index){
+      //debugger;
       line.draw(this, index);
+      //console.log(line.y);
       line.update(this, index);
+
     }.bind(this));
 
     //draw the ship
     this.ship.draw(this);
-
 
     //check ship collision
     this.hasCrashed = Line.checkCollision(this.lines);
@@ -55,12 +59,12 @@ var Game = (function(){
 
   Game.prototype.timer = function(){
     this.clock += 1;
-    if(this.clock % 5 === 0){
+    if(this.clock % 3 === 0){
       this.lines.push(new Line(this));
-      this.currentLine++;
+      //debugger;
     }
 
-    if(this.lines.length > 7){
+    if(this.lines.length > 3){
       this.lines.shift();
     }
   };

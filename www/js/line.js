@@ -54,7 +54,7 @@ var Line = (function(){
 
   Line.prototype.update = function(game){
     //asteroids speed
-    this.y -= 3;
+    this.y -= 2;
 
     this.debris.forEach(function(rock){
       rock.update(this, game);
