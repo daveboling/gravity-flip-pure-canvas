@@ -13,6 +13,7 @@ var Game = (function(){
     this.assets        = Asset.load();
     this.hasCrashed    = false; //has the ship crashed yet?
     this.clock         = 0;
+    this.flipTimer     = 0;
     this.lines         = [];
     this.currentLine   = 0;
     this.listen(); //listen for device orientation change
@@ -39,6 +40,8 @@ var Game = (function(){
 
     }.bind(this));
 
+    this.gravityFlip();
+
     //draw the ship
     this.ship.draw(this);
 
@@ -58,13 +61,26 @@ var Game = (function(){
   };
 
   Game.prototype.timer = function(){
-    this.clock += 1;
+    this.clock++;
+    this.flipTimer++;
     if(this.clock % 4 === 0){
       this.lines.push(new Line(this));
     }
 
-    if(this.lines.length > 3){
+    if(this.lines.length > 5){
       this.lines.shift();
+    }
+  };
+
+  Game.prototype.gravityFlip = function(){
+    if(this.flipTimer > 20){
+      //draw warning
+      console.log('Warning: Gravity flip imminent');
+    }
+    if(this.flipTimer === 30){
+      //call this.ship.gravityFlip()
+      console.log('Gravity flip');
+      this.flipTimer = 0;
     }
   };
 
