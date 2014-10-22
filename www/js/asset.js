@@ -31,6 +31,18 @@ var Asset = (function(){
     asset.venus.src = 'img/assets/venus.jpg';
     asset.neptune = new Image();
     asset.neptune.src = 'img/assets/neptune.jpg';
+    asset.earth = new Image();
+    asset.earth.src = 'img/assets/earth.jpg';
+    asset.pluto = new Image();
+    asset.pluto.src = 'img/assets/pluto.png';
+    asset.saturn = new Image();
+    asset.saturn.src = 'img/assets/saturn.jpg';
+    asset.uranus = new Image();
+    asset.uranus.src = 'img/assets/uranus.jpg';
+    asset.theSun = new Image();
+    asset.theSun.src = 'img/assets/sun.jpg';
+
+
 
 
     return asset;

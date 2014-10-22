@@ -20,8 +20,8 @@ var Line = (function(){
 
   Line.prototype.create = function(game){
     var currentX = 0,
-    debrisToDraw = Math.floor((Math.random() * 4) + 1), //number of objects
-    debrisPos = [],
+    debrisToDraw = Math.floor((Math.random() * 5) + 1), //number of objects
+    debrisPos = ['hole', 'hole', 'hole', 'hole', 'hole', 'hole'],
     nums = [],
     maxNum = 6,
     num;
@@ -32,11 +32,19 @@ var Line = (function(){
         nums.push(num);
       }
     }
-    for(var i = 0; i < 6; i++){
-      debrisPos.push(Math.floor(Math.random()*6));
-      this.debris.push(new Rock({y: 20, x: currentX}));
-      currentX += window.innerWidth/6;
-    }
+
+    for(var i= 0; i < nums.length; i++){
+        debrisPos[nums[i]]='rock';
+      }
+
+    for(var j= 0; j < debrisPos.length; j++){
+      if(debrisPos[j] !== 'rock'){
+          currentX += window.innerWidth/6;
+        }else{
+          this.debris.push(new Rock({y: 20, x: currentX}));
+          currentX += window.innerWidth/6;
+        }
+      }
   };
 
   Line.checkCollision = function(lines){
