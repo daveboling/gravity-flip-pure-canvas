@@ -4,6 +4,9 @@
 var Game = (function(){
   'use strict';
 
+  var animate = '',
+  gameClock = '';
+
   //game objects
   function Game(){
     this.canvas        = document.getElementById('canvas');
@@ -48,12 +51,15 @@ var Game = (function(){
     //check ship collision
     this.hasCrashed = Line.checkCollision(this.lines);
 
+    //animation
+    animate = window.requestAnimationFrame(this.loop.bind(this));
+
     if(this.hasCrashed){
-      console.log('You Crashed!');
+      window.cancelAnimationFrame(animate);
+      clearInterval(gameClock);
+      this.clear();
     }
 
-
-    window.requestAnimationFrame(this.loop.bind(this));
   };
 
   Game.prototype.clear = function(){
@@ -79,7 +85,7 @@ var Game = (function(){
       console.log('Warning: Gravity flip imminent');
     }
     if(this.flipTimer === 30){
-      this.ship.gravityFlip()
+      this.ship.gravityFlip();
       console.log('Gravity flip');
       this.flipTimer = 0;
     }
@@ -87,11 +93,12 @@ var Game = (function(){
 
   Game.prototype.start = function(){
     //timer for adding new lines
-    setInterval(this.timer.bind(this), 1000);
+    gameClock = setInterval(this.timer.bind(this), 1000);
     this.hasCrashed = false;
     this.ship = new Ship(this);
     this.lines.push(new Line(this));
     this.loop();
+    // FOR OLDER ANDROID ONLY - setInterval(this.loop.bind(this), 16);
   };
 
   return Game;
