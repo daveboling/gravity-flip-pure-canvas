@@ -26,7 +26,6 @@ var Game = (function(){
 
   Game.prototype.loop = function(){
     this.clear(); //clear canvas
-    var self = this;
 
     this.ship.draw(this);
     console.log(this.lines);
