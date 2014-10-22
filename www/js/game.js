@@ -29,11 +29,20 @@ var Game = (function(){
 
     //draw the ship
     this.ship.draw(this);
+
     //draw lines that are currently in lines array
     this.lines.forEach(function(line, index){
       line.draw(this, index);
       line.update(this, index);
     }.bind(this));
+
+    //check ship collision
+    this.hasCrashed = Line.checkCollision(this.lines);
+
+    if(this.hasCrashed){
+      console.log('You Crashed!');
+    }
+
 
     window.requestAnimationFrame(this.loop.bind(this));
   };
@@ -55,6 +64,7 @@ var Game = (function(){
   };
 
   Game.prototype.start = function(){
+    //timer for adding new lines
     setInterval(this.timer.bind(this), 1000);
     this.hasCrashed = false;
     this.ship = new Ship(this);
