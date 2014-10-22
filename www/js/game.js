@@ -27,8 +27,9 @@ var Game = (function(){
   Game.prototype.loop = function(){
     this.clear(); //clear canvas
 
+    //draw the ship
     this.ship.draw(this);
-    console.log(this.lines);
+    //draw lines that are currently in lines array
     this.lines.forEach(function(line, index){
       line.draw(this, index);
       line.update(this, index);
