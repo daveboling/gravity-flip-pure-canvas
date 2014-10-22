@@ -6,14 +6,14 @@ var Line = (function(){
 
   function Line(game){
     this.x = 0;
-    this.y = 20;
+    this.y = game.canvas.height;
     this.debris = [];
 
     this.create(game);
   }
 
-  Line.prototype.draw = function(game){
-    game.line.debris.forEach(function(rock){
+  Line.prototype.draw = function(game, index){
+    game.lines[index].debris.forEach(function(rock){
       rock.draw(game);
     });
   };
@@ -32,7 +32,6 @@ var Line = (function(){
         nums.push(num);
       }
     }
-
     for(var i = 0; i < 6; i++){
       debrisPos.push(Math.floor(Math.random()*6));
       this.debris.push(new Rock({y: 20, x: currentX}));
@@ -40,17 +39,28 @@ var Line = (function(){
     }
   };
 
+  Line.checkCollision = function(lines){
+    var crashed = false;
+    lines.forEach(function(line){
+      line.debris.forEach(function(rock){
+        if(rock.isCollided === true){
+          crashed = true;
+        }
+      });
+    });
+
+    return crashed;
+  };
+
   Line.prototype.update = function(game){
-   if(this.y > game.canvas.height){
-      this.y = 0;
-      this.x = Math.ceil(Math.random() * game.canvas.width);
-    }else{
-      this.y += 1;
-    }
+    //asteroids speed
+    this.y -= 3;
 
     this.debris.forEach(function(rock){
-      rock.update(this);
+      rock.update(this, game);
     }.bind(this));
+    //here goes a function to check position of game.ship against position of each rock in this line
+    //put htis inside
   };
 
   return Line;
