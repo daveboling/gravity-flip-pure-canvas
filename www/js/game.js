@@ -53,7 +53,7 @@ var Game = (function(){
 
   Game.prototype.timer = function(){
     this.clock += 1;
-    if(this.clock % 3 === 0){
+    if(this.clock % 6 === 0){
       this.lines.push(new Line(this));
       this.currentLine++;
     }
