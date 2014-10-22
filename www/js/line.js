@@ -51,20 +51,15 @@ var Line = (function(){
     var crashed = false;
     lines.forEach(function(line){
       line.debris.forEach(function(rock){
-        console.log(rock);
         if(rock.isCollided === true){
           crashed = true;
           return;
         }
       });
-      if(crashed){
-        return;
-      }
     });
 
-
-
     return crashed;
+
   };
 
   Line.prototype.update = function(game){

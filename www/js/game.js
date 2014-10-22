@@ -72,7 +72,6 @@ var Game = (function(){
   Game.prototype.timer = function(){
     this.clock++;
     this.flipTimer++;
-    console.log(this.flipTimer);
     if(this.clock % 4 === 0){
       this.lines.push(new Line(this));
     }
