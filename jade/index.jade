@@ -21,7 +21,7 @@ html
       button.button.button-clear(ng-show='gameActive') {{clock}} s
       h1.title GRAVITY FLIP
       button.button.button-assertive(ng-click='start()' ng-hide='gameActive') Start Game
-      button.button.button-clear(ng-show='gameActive') score: {{clock}}
+      button.button.button-clear(ng-show='gameActive') {{clock*20}} pts
     ion-content
-      h2(ng-hide='gameActive') Your score is {{clock}}
+      h2(ng-hide='gameActive') Your score is {{clock *20}}
       canvas#canvas(ng-show='gameActive')
