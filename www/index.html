@@ -22,6 +22,7 @@
       <button ng-show="gameActive" class="button button-clear">{{clock}} s</button>
       <h1 class="title">GRAVITY FLIP</h1>
       <button ng-click="start()" ng-hide="gameActive" class="button button-assertive">Start Game</button>
+      <button ng-show="gameActive" class="button button-clear">score: {{clock}}</button>
     </ion-header-bar>
     <ion-content>
       <canvas id="canvas" ng-show="gameActive"></canvas>
