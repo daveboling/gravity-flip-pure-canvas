@@ -91,12 +91,10 @@ var Game = (function(){
   };
 
   Game.prototype.gravityFlip = function(){
-    if(this.flipTimer === 20){
-      this.assets.audioWarn.play();
-    }
     if(this.flipTimer > 20){
+        //this.assets.audioWarn.play();
         //red backdrop
-        this.ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+        this.ctx.fillStyle = 'rgba(255, 0, 0, 0.6)';
         this.ctx.fillRect(0, (this.canvas.height / 2.3), this.canvas.width, 150);
       if(this.flipTimer % 2 === 0){
         //draw warning
@@ -107,7 +105,7 @@ var Game = (function(){
       }
     }
     if(this.flipTimer === 30){
-      this.assets.audioWarn.pause();
+      //this.assets.audioWarn.pause();
       this.ship.gravityFlip();
       this.flipTimer = 0;
     }
