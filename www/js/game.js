@@ -22,6 +22,7 @@ var Game = (function(){
     this.flipTimer     = 0;
     this.lines         = [];
     this.currentLine   = 0;
+    this.isWarning     = false;
     this.listen(); //listen for device orientation change
   }
 
@@ -39,9 +40,7 @@ var Game = (function(){
 
     //draw lines that are currently in lines array
     this.lines.forEach(function(line, index){
-      //debugger;
       line.draw(this, index);
-      //console.log(line.y);
       line.update(this, index);
 
     }.bind(this));
@@ -60,9 +59,10 @@ var Game = (function(){
     animate = window.requestAnimationFrame(this.loop.bind(this));
 
     if(this.hasCrashed){
-      window.cancelAnimationFrame(animate);
-      clearInterval(gameClock);
-      this.clear();
+      //window.cancelAnimationFrame(animate);
+      //clearInterval(gameClock);
+      //this.clear();
+      console.log('stuff');
     }
 
   };
@@ -85,13 +85,20 @@ var Game = (function(){
   };
 
   Game.prototype.gravityFlip = function(){
-    if(this.flipTimer > 20){
-      //draw warning
-      console.log('Warning: Gravity flip imminent');
+    if(this.flipTimer > 5){
+      if(this.flipTimer % 2 === 0){
+        //draw warning
+        this.ctx.fillStyle='red';
+        this.ctx.font = '40pt Optimus';
+        this.ctx.fillText('GRAVITY FLIP IMMINENT', (this.canvas.height / 2), (this.canvas.width / 2));
+      }
+      else{
+          //Display nothing
+          console.log('');
+      }
     }
     if(this.flipTimer === 30){
       this.ship.gravityFlip();
-      console.log('Gravity flip');
       this.flipTimer = 0;
     }
   };
@@ -105,6 +112,7 @@ var Game = (function(){
     this.loop();
     // FOR OLDER ANDROID ONLY - setInterval(this.loop.bind(this), 16);
   };
+
 
   return Game;
 

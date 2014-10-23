@@ -1,4 +1,8 @@
 /* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: 'Optimus';
+    src: url('../fonts/OptimusPrinceps.ttf');
+}
 
 body{
   background-color: black;
