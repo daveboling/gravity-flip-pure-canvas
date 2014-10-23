@@ -43,25 +43,17 @@ var Asset = (function(){
     asset.theSun = new Image();
     asset.theSun.src = 'img/assets/sun.jpg';
 
+    asset.audioWarn = new Media();
+    asset.audioWarn.src = 'audio/warn.wav';
 
     //audio
-    var loop = function(status){
-        if (status === Media.MEDIA_STOPPED){
-            asset.audioActiveGame.play();
-        }
-    };
-
-    asset.audioWarn = new Media();
-    //game audio - Android
     if(device.platform === 'Android'){
         asset.audioWarn.src       = '/android_asset/www/audio/warn.wav';
-        asset.audioActiveGame     = new Media('/android_asset/www/audio/main.mp3', null, null, loop);
-    }else{
-        asset.audioWarn.src       = 'audio/warn.wav';
-        asset.audioActiveGame     = new Media('audio/main.mp3', null, null, loop);
+        asset.audioActiveGame     = new Media('/android_asset/www/audio/main.mp3');
     }
-
-    //asset.audioActiveGame.pause();
+    else{
+        asset.audioActiveGame     = new Media('audio/main.mp3');
+    }
 
     return asset;
   };

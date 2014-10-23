@@ -21,7 +21,7 @@
     };
 
     window.addEventListener('shipcrash', function(){
-      alert('crash event triggered from main.js');
+      //alert('crash event triggered from main.js');
       game = new Game();
       $scope.gameActive = false;
 
