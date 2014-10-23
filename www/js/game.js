@@ -89,6 +89,11 @@ var Game = (function(){
       //draw warning
       console.log('Warning: Gravity flip imminent');
     }
+    if(this.flipTimer === 2){
+      console.log('Get Ready!');
+      this.ship.x = this.ship.flippedx;
+      this.ship.y = this.ship.flippedy;
+    }
     if(this.flipTimer === 30){
       this.ship.gravityFlip();
       console.log('Gravity flip');
