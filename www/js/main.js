@@ -4,6 +4,7 @@
 
   main.controller('MainCtrl', ['$scope', function($scope){
     $scope.gameActive = false;
+    $scope.clock = 0;
 
     var game = new Game();
 
@@ -18,14 +19,20 @@
       game.start();
     };
 
-    window.addEventListener('crashed', function(){
+    window.addEventListener('shipcrash', function(){
       alert('crash event triggered from main.js');
-      game = new Game();
       $scope.gameActive = false;
 
       $scope.$digest();
-
     });
+
+    window.addEventListener('timer', function(time){
+      console.log(time);
+      $scope.clock = time.detail;
+
+      $scope.$digest();
+    });
+
 
   }]);
 })();
