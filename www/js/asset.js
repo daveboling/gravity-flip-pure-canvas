@@ -1,5 +1,5 @@
 /* exported Asset */
-/* global Media, device */
+/* global Media */
 
 var Asset = (function(){
   'use strict';
