@@ -97,10 +97,6 @@ var Game = (function(){
         this.ctx.textAlign = 'center';
         this.ctx.fillText('GRAVITY FLIP IMMINENT', (this.canvas.width / 2), (this.canvas.height / 2));
       }
-      else{
-          //Display nothing
-          console.log('');
-      }
     }
     if(this.flipTimer === 30){
       this.assets.audioWarn.pause();
@@ -118,7 +114,7 @@ var Game = (function(){
     this.assets.audioActiveGame.play();
     this.loop();
     //FOR OLDER ANDROID ONLY
-    //setInterval(this.loop.bind(this), 33);
+    //setInterval(this.loop.bind(this), 16);
   };
 
 

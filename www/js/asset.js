@@ -51,15 +51,17 @@ var Asset = (function(){
         }
     };
 
-    asset.audioWarn           = new Media();
+    asset.audioWarn = new Media();
     //game audio - Android
     if(device.platform === 'Android'){
         asset.audioWarn.src       = '/android_asset/www/audio/warn.wav';
-        asset.audioActiveGame     = new Media('/android_asset/www/audio/main.wav', null, null, loop);
+        asset.audioActiveGame     = new Media('/android_asset/www/audio/main.mp3', null, null, loop);
     }else{
         asset.audioWarn.src       = 'audio/warn.wav';
-        asset.audioActiveGame     = new Media('audio/main.wav', null, null, loop);
+        asset.audioActiveGame     = new Media('audio/main.mp3', null, null, loop);
     }
+
+    //asset.audioActiveGame.pause();
 
     return asset;
   };
