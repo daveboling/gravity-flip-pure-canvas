@@ -43,25 +43,16 @@ var Asset = (function(){
     asset.theSun = new Image();
     asset.theSun.src = 'img/assets/sun.jpg';
 
-
-    //audio
-    var loop = function(status){
-        if (status === Media.MEDIA_STOPPED){
-            asset.audioActiveGame.play();
-        }
-    };
-
     asset.audioWarn = new Media();
-    //game audio - Android
+    asset.audioWarn.src = 'audio/alarm2.mp3';
+    asset.audioActiveGame = new Media();
+    asset.audioActiveGame.src = 'audio/main.mp3';
+    //audio
+    /*
     if(device.platform === 'Android'){
         asset.audioWarn.src       = '/android_asset/www/audio/warn.wav';
-        asset.audioActiveGame     = new Media('/android_asset/www/audio/main.mp3', null, null, loop);
-    }else{
-        asset.audioWarn.src       = 'audio/warn.wav';
-        asset.audioActiveGame     = new Media('audio/main.mp3', null, null, loop);
-    }
-
-    //asset.audioActiveGame.pause();
+        asset.audioActiveGame     = new Media('/android_asset/www/audio/main.mp3');
+    }*/
 
     return asset;
   };

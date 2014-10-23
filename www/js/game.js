@@ -83,6 +83,11 @@ var Game = (function(){
     if(this.lines.length > 5){
       this.lines.shift();
     }
+
+    if(this.clock % 48 === 0){
+      console.log('played');
+      this.assets.audioActiveGame.play();
+    }
   };
 
   Game.prototype.gravityFlip = function(){
