@@ -10,7 +10,6 @@ var Ship = (function(){
     this.flippedx        = game.canvas.width - 5; //gravity flip position
     this.flippedy        = game.canvas.height / 2; //gravity flip position
     this.gravityFlipped  = false;
-    this.flipped         = false;
    }
 
   //draw the ship on the canvas
@@ -21,10 +20,6 @@ var Ship = (function(){
     this.y = this.y < 0 ? 0 : this.y;
     this.y = this.y > game.canvas.height - 45 ? game.canvas.height - 45 : this.y;
     game.ctx.drawImage(game.assets.ship, this.x, this.y, this.width, this.height);
-    if(this.flipped){
-      game.ctx.translate(this.width / 2, this.height / 2);
-      game.ctx.rotate(Math.PI / 2);
-    }
   };
 
   //update positon based on accelerometer

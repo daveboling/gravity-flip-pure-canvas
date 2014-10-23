@@ -5,7 +5,7 @@
   main.controller('MainCtrl', ['$scope', function($scope){
     $scope.gameActive = false;
 
-    var game = new Game();
+    var game = null;
 
     //wait for device ready and then load the game
     document.addEventListener('deviceready', function(){

@@ -89,10 +89,11 @@ var Game = (function(){
       //draw warning
       console.log('Warning: Gravity flip imminent');
     }
-    if(this.flipTimer === 2){
+    if(this.ship.gravityFlipped === true){
       console.log('Get Ready!');
       this.ship.x = this.ship.flippedx;
       this.ship.y = this.ship.flippedy;
+      //this.ship.flipped = !this.ship.flipped;
     }
     if(this.flipTimer === 30){
       this.ship.gravityFlip();
@@ -107,8 +108,8 @@ var Game = (function(){
     this.hasCrashed = false;
     this.ship = new Ship(this);
     this.lines.push(new Line(this));
-    this.loop();
-    //setInterval(this.loop.bind(this), 16);
+    //this.loop();
+    setInterval(this.loop.bind(this), 16);
     // FOR OLDER ANDROID ONLY - setInterval(this.loop.bind(this), 16);
   };
 
