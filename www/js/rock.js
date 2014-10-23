@@ -9,6 +9,7 @@ var Rock = (function(){
     this.y            = line.y;
     this.rockImgIndex = Math.floor((Math.random() * 9));
     this.isCollided   = false;
+    this.r            = this.width / 2;
   }
 
   Rock.prototype.draw = function(game){
@@ -24,11 +25,12 @@ var Rock = (function(){
   };
 
   Rock.prototype.checkCollision = function(ship){
-    var sumsquares = Math.pow(this.x - ship.x, 2) + Math.pow(this.y - ship.y, 2),
+    //var sumsquares = Math.pow((this.x + this.r) - ship.x, 2) + Math.pow(this.y - ship.y, 2),
+    var sumsquares = Math.pow(this.x  - ship.x, 2) + Math.pow(this.y - ship.y, 2),
         distance = Math.sqrt(sumsquares);
     //needs to be fixed in relation to how rocks are being drawn
-    if(distance < 5){
-      this.isCollided = true;
+    if(distance < (this.r  * 0.7)){
+      window.dispatchEvent(new Event('shipcrash'));
     }
   };
 

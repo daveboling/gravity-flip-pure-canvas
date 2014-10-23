@@ -47,19 +47,6 @@ var Line = (function(){
       }
   };
 
-  Line.checkCollision = function(lines){
-    var crashed = false;
-    lines.forEach(function(line){
-      line.debris.forEach(function(rock){
-        if(rock.isCollided === true){
-          crashed = true;
-        }
-      });
-    });
-
-    return crashed;
-  };
-
   Line.prototype.update = function(game){
     //asteroids speed
     this.y -= 2;
