@@ -85,17 +85,19 @@ var Game = (function(){
     }
 
     if(this.clock % 48 === 0){
-      console.log('played');
+      //console.log('played');
       this.assets.audioActiveGame.play();
     }
   };
 
   Game.prototype.gravityFlip = function(){
+    if(this.flipTimer === 20){
+      this.assets.audioWarn.play();
+    }
     if(this.flipTimer > 20){
-        this.assets.audioWarn.play();
         //red backdrop
         this.ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
-        this.ctx.fillRect(0, (this.canvas.height / 2.3), this.canvas.width, 60);
+        this.ctx.fillRect(0, (this.canvas.height / 2.3), this.canvas.width, 150);
       if(this.flipTimer % 2 === 0){
         //draw warning
         this.ctx.fillStyle = 'black';
