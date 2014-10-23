@@ -56,11 +56,12 @@ var Game = (function(){
     }.bind(this));
 
     //animation
-    animate = window.requestAnimationFrame(this.loop.bind(this));
+    //animate = window.requestAnimationFrame(this.loop.bind(this));
 
     if(this.hasCrashed){
       this.assets.audioActiveGame.pause();
-      window.cancelAnimationFrame(animate);
+      //window.cancelAnimationFrame(animate);
+      clearInterval(animate);
       clearInterval(gameClock);
       this.clear();
     }
@@ -85,7 +86,6 @@ var Game = (function(){
     }
 
     if(this.clock % 48 === 0){
-      //console.log('played');
       this.assets.audioActiveGame.play();
     }
   };
@@ -120,7 +120,7 @@ var Game = (function(){
     this.assets.audioActiveGame.play();
     this.loop();
     //FOR OLDER ANDROID ONLY
-    //setInterval(this.loop.bind(this), 16);
+    animate = setInterval(this.loop.bind(this), 16);
   };
 
 
