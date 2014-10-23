@@ -73,6 +73,7 @@ var Game = (function(){
 
   Game.prototype.timer = function(){
     this.clock++;
+    window.dispatchEvent(new CustomEvent('timer', {'detail':this.clock}));
     this.flipTimer++;
     if(this.clock % 4 === 0){
       var newLine = new Line(this);
