@@ -52,7 +52,9 @@ var Game = (function(){
     this.ship.draw(this);
 
     //check ship collision
-    this.hasCrashed = Line.checkCollision(this.lines);
+    window.addEventListener('shipcrash', function(){
+      this.hasCrashed = true;
+    }.bind(this));
 
     //animation
     animate = window.requestAnimationFrame(this.loop.bind(this));
@@ -73,7 +75,8 @@ var Game = (function(){
     this.clock++;
     this.flipTimer++;
     if(this.clock % 4 === 0){
-      this.lines.push(new Line(this));
+      var newLine = new Line(this);
+      this.lines.push(newLine);
     }
 
     if(this.lines.length > 5){
