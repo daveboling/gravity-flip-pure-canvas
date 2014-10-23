@@ -44,16 +44,15 @@ var Asset = (function(){
     asset.theSun.src = 'img/assets/sun.jpg';
 
     asset.audioWarn = new Media();
-    asset.audioWarn.src = 'audio/warn.wav';
-
+    asset.audioWarn.src = 'audio/alarm2.mp3';
+    asset.audioActiveGame = new Media();
+    asset.audioActiveGame.src = 'audio/main.mp3';
     //audio
+    /*
     if(device.platform === 'Android'){
         asset.audioWarn.src       = '/android_asset/www/audio/warn.wav';
         asset.audioActiveGame     = new Media('/android_asset/www/audio/main.mp3');
-    }
-    else{
-        asset.audioActiveGame     = new Media('audio/main.mp3');
-    }
+    }*/
 
     return asset;
   };
