@@ -59,10 +59,10 @@ var Game = (function(){
     animate = window.requestAnimationFrame(this.loop.bind(this));
 
     if(this.hasCrashed){
-      //window.cancelAnimationFrame(animate);
-      //clearInterval(gameClock);
-      //this.clear();
-      console.log('stuff');
+      this.assets.audioActiveGame.pause();
+      window.cancelAnimationFrame(animate);
+      clearInterval(gameClock);
+      this.clear();
     }
 
   };
@@ -85,12 +85,17 @@ var Game = (function(){
   };
 
   Game.prototype.gravityFlip = function(){
-    if(this.flipTimer > 5){
+    if(this.flipTimer > 20){
+        this.assets.audioWarn.play();
+        //red backdrop
+        this.ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+        this.ctx.fillRect(0, (this.canvas.height / 2.3), this.canvas.width, 60);
       if(this.flipTimer % 2 === 0){
         //draw warning
-        this.ctx.fillStyle='red';
-        this.ctx.font = (this.canvas.width / 4) + 'px Optimus';
-        this.ctx.fillText('GRAVITY FLIP IMMINENT', (this.canvas.height / 2), (this.canvas.width / 2));
+        this.ctx.fillStyle = 'black';
+        this.ctx.font = '16pt Bell';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('GRAVITY FLIP IMMINENT', (this.canvas.width / 2), (this.canvas.height / 2));
       }
       else{
           //Display nothing
@@ -98,6 +103,7 @@ var Game = (function(){
       }
     }
     if(this.flipTimer === 30){
+      this.assets.audioWarn.pause();
       this.ship.gravityFlip();
       this.flipTimer = 0;
     }
@@ -109,8 +115,10 @@ var Game = (function(){
     this.hasCrashed = false;
     this.ship = new Ship(this);
     this.lines.push(new Line(this));
+    this.assets.audioActiveGame.play();
     this.loop();
-    // FOR OLDER ANDROID ONLY - setInterval(this.loop.bind(this), 16);
+    //FOR OLDER ANDROID ONLY
+    //setInterval(this.loop.bind(this), 33);
   };
 
 
