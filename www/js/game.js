@@ -22,6 +22,7 @@ var Game = (function(){
     this.flipTimer     = 0;
     this.lines         = [];
     this.currentLine   = 0;
+    this.isWarning     = false;
     this.listen(); //listen for device orientation change
   }
 
@@ -39,9 +40,7 @@ var Game = (function(){
 
     //draw lines that are currently in lines array
     this.lines.forEach(function(line, index){
-      //debugger;
       line.draw(this, index);
-      //console.log(line.y);
       line.update(this, index);
 
     }.bind(this));
@@ -60,6 +59,7 @@ var Game = (function(){
     animate = window.requestAnimationFrame(this.loop.bind(this));
 
     if(this.hasCrashed){
+      this.assets.audioActiveGame.pause();
       window.cancelAnimationFrame(animate);
       clearInterval(gameClock);
       this.clear();
@@ -73,6 +73,7 @@ var Game = (function(){
 
   Game.prototype.timer = function(){
     this.clock++;
+    window.dispatchEvent(new CustomEvent('timer', {'detail':this.clock}));
     this.flipTimer++;
     if(this.clock % 4 === 0){
       var newLine = new Line(this);
@@ -86,12 +87,21 @@ var Game = (function(){
 
   Game.prototype.gravityFlip = function(){
     if(this.flipTimer > 20){
-      //draw warning
-      console.log('Warning: Gravity flip imminent');
+        this.assets.audioWarn.play();
+        //red backdrop
+        this.ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
+        this.ctx.fillRect(0, (this.canvas.height / 2.3), this.canvas.width, 60);
+      if(this.flipTimer % 2 === 0){
+        //draw warning
+        this.ctx.fillStyle = 'black';
+        this.ctx.font = '16pt Bell';
+        this.ctx.textAlign = 'center';
+        this.ctx.fillText('GRAVITY FLIP IMMINENT', (this.canvas.width / 2), (this.canvas.height / 2));
+      }
     }
     if(this.flipTimer === 30){
+      this.assets.audioWarn.pause();
       this.ship.gravityFlip();
-      console.log('Gravity flip');
       this.flipTimer = 0;
     }
   };
@@ -102,9 +112,12 @@ var Game = (function(){
     this.hasCrashed = false;
     this.ship = new Ship(this);
     this.lines.push(new Line(this));
+    this.assets.audioActiveGame.play();
     this.loop();
-    // FOR OLDER ANDROID ONLY - setInterval(this.loop.bind(this), 16);
+    //FOR OLDER ANDROID ONLY
+    //setInterval(this.loop.bind(this), 16);
   };
+
 
   return Game;
 

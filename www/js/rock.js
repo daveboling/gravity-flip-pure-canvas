@@ -25,10 +25,11 @@ var Rock = (function(){
   };
 
   Rock.prototype.checkCollision = function(ship){
-    var sumsquares = Math.pow((this.x + this.r) - ship.x, 2) + Math.pow(this.y - ship.y, 2),
+    //var sumsquares = Math.pow((this.x + this.r) - ship.x, 2) + Math.pow(this.y - ship.y, 2),
+    var sumsquares = Math.pow(this.x  - ship.x, 2) + Math.pow(this.y - ship.y, 2),
         distance = Math.sqrt(sumsquares);
     //needs to be fixed in relation to how rocks are being drawn
-    if(distance < (this.r  * 1)){
+    if(distance < (this.r  * 0.7)){
       window.dispatchEvent(new Event('shipcrash'));
     }
   };

@@ -23,4 +23,5 @@ html
       button.button.button-assertive(ng-click='start()' ng-hide='gameActive') Start Game
       button.button.button-clear(ng-show='gameActive') score: {{clock}}
     ion-content
+      h2(ng-hide='gameActive') Your score is {{clock}}
       canvas#canvas(ng-show='gameActive')
